@@ -17,10 +17,10 @@ const reducer = (state = initialState, action) => {
 						colors: [...state.colors, action.payload.color],
 					};
 
-				case "remove":
+				case "removed":
 					return {
 						...state,
-						colors: state.colors.map(
+						colors: state.colors.filter(
 							(existingColor) => existingColor !== action.payload.color
 						),
 					};
