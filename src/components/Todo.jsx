@@ -2,22 +2,24 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
 import cancelImg from "../assets/images/cancel.png";
-import { colorSelected, deleted, toggled } from "../redux/todos/actionCreators";
+import deleteTodo from "../redux/todos/thunk/deleteTodo";
+import updateColor from "../redux/todos/thunk/updateColor";
+import updateStatus from "../redux/todos/thunk/updateStatus";
 
 export default function Todo({ todo }) {
 	const dispatch = useDispatch();
 	const { id, text, color, completed } = todo;
 
-	const handleCompletedTodo = (todoId) => {
-		dispatch(toggled(todoId));
+	const handleCompletedTodo = (todoId, completed) => {
+		dispatch(updateStatus(todoId, completed));
 	};
 
 	const handleColorSelected = (todoId, color) => {
-		dispatch(colorSelected(todoId, color));
+		dispatch(updateColor(todoId, color));
 	};
 
 	const handleDeleteTodo = (todoId) => {
-		dispatch(deleted(todoId));
+		dispatch(deleteTodo(todoId));
 	};
 
 	return (
@@ -30,7 +32,7 @@ export default function Todo({ todo }) {
 				<input
 					type="checkbox"
 					checked={completed}
-					onChange={() => handleCompletedTodo(id)}
+					onChange={() => handleCompletedTodo(id, completed)}
 					className="opacity-0 absolute rounded-full cursor-pointer"
 				/>
 				{completed && (
