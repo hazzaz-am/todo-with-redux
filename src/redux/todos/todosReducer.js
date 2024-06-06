@@ -11,7 +11,7 @@ import { initialState } from "./initialState";
 
 // for generate todo id
 const nextTodoId = (todos) => {
-	const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
+	const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), 0);
 	return maxId + 1;
 };
 

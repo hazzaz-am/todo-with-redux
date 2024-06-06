@@ -1,3 +1,10 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "text": "asdfasdf",
+      "completed": false,
+      "id": 1,
+      "color": "red"
+    }
+  ]
 }
